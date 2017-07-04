@@ -1,0 +1,5 @@
+<%= render 'shared/error_messages', object: @user %>
+<%= form_for @role do |f| %>
+	<%= f.text_field :role_name %>
+	<%= f.submit 'Create' %>
+<% end %>

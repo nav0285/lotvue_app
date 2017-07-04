@@ -1,0 +1,24 @@
+<div class='all_users'>
+	<h2>Users</h2>
+	<% if @users.any? %>
+		<table>
+		  <tr>
+		  <th></th>
+		  <th>First Name</th>
+		  <th>Last Name</th>
+		  <th>Email</th>
+		  </tr>
+			<% @users.each do |user| %>
+				<tr>
+					<td><%= image_tag user.pic.url(:thumb) %></td>
+					<td><%= user.first_name %></td>
+					<td><%= user.last_name %></td>
+					<td><%= user.email %></td>
+				</tr>
+			<% end %>
+		</table>
+	<% else %>
+		<h3>No Users are present</h3>
+	<% end %>
+	<%= link_to 'Add User', new_user_path %>
+</div>
