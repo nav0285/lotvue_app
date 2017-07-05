@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
-			redirect_to users_path, notice: 'New User created'
+			redirect_to root_url, notice: 'New User created'
 		else
 			render :new
 		end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
 	def update
 		if @user.update(user_params)
-			redirect_to users_path, notice: 'User updated'
+			redirect_to root_url, notice: 'User updated'
 		else
 			render :edit
 		end
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
 	def destroy
 		if @role.destroy
-			redirect_to users_path, notice: 'User destroyed'
+			redirect_to root_url, notice: 'User destroyed'
 		else
 			redirect_to users_path
 		end	

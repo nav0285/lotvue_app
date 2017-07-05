@@ -1,12 +1,13 @@
 <div class="roles">
 	<h2>Roles</h2>
 	<% if @roles.any? %>
-	<% @roles.each do |role| %>
-		<%= check_box_tag :hidden, role.id, role.hidden %>
-		<%= role.role_name %><br/>
-	<% end %>
+		<% @roles.each do |role| %>
+			<%= check_box_tag :hidden, role.id, role.hidden %>
+			<%= role.role_name %><br/>
+		<% end %>
+    <%= link_to 'Save', '#', id: 'bulk_update', class: "btn xs btn-success" %>
 	<% else %>
 		<h3>No Roles are present</h3>
 	<% end %>
-	<%= link_to 'Save', '#', id: 'bulk_update', class: "btn d_btn btn-success" %>
+  <%= link_to 'New Role', new_role_path, class: 'btn xs btn-success' %>
 </div>

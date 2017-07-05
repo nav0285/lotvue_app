@@ -37,6 +37,7 @@ gem "paperclip", "~> 4.2"
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'
+  gem 'rails-controller-testing'
   gem 'sqlite3'
 end
 

@@ -13,7 +13,7 @@ class RolesController < ApplicationController
 	def create
 		@role = Role.new(role_params)
 		if @role.save
-			redirect_to roles_path, notice: 'New Role created'
+			redirect_to root_url, notice: 'New Role created'
 		else
 			render :new
 		end
@@ -27,15 +27,19 @@ class RolesController < ApplicationController
 
 	def update
 		if @role.update(role_params)
-			redirect_to roles_path, notice: 'Role updated'
+			redirect_to root_url, notice: 'Role updated'
 		else
 			render :edit
 		end
 	end
 
 	def bulk_update
-		@roles = Role.where("id in (?)", params[:role_ids])
-		@active_roles = Role.where.not("id in (?)", params[:role_ids])
+		@roles = Role.where("id in (?)", params[:role_ids])	
+		if params[:role_ids]
+  		@active_roles = Role.where.not("id in (?)", params[:role_ids])
+		else
+			@active_roles = Role.all
+		end
 		@roles.update_all(hidden: true)
 		@active_roles.update_all(hidden: false)
 		render json: {success: true}
